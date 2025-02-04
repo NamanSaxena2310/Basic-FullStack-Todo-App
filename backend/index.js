@@ -2,8 +2,10 @@ const express = require('express')
 const {createTodo} = require('./types')
 const {updateTodo} = require('./types')
 const {todo} = require('./db')
+const cors = require('cors')
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 
 
@@ -49,7 +51,7 @@ app.put('/completed',async(req,res)=>{
   const parsedId = updateTodo.safeParse(req.body)
 
   if (!parsedId.success) {
-    req.status(411).json({
+    res.status(411).json({
       message: "Please eneter a valid id "
     })
     return
