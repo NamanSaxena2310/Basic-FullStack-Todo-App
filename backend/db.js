@@ -5,10 +5,10 @@ mongoose.connect('mongodb+srv://admin:admin@learningmongodb.zkb7g.mongodb.net/To
 })
 
 
-const mySchema = new mongoose.Schema({
-  title: {type:String,required: true},
-  description:  {type:String,required: true},
-  completed:  {type: Boolean, default: false}
+const mySchema = mongoose.Schema({
+  title: String,
+  description:  String,
+  completed:  Boolean
 })
 
 const todo = mongoose.model('todo',mySchema)
